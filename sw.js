@@ -1,6 +1,6 @@
 // Super CTT 3D: guarda el juego en el móvil para que funcione sin conexión.
 // Cuando subas una versión nueva, cambia el número de VERSION para que los móviles la descarguen.
-const VERSION='super-ctt-3d-v3';
+const VERSION='super-ctt-3d-v4';
 const FILES=["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png", "./icon-maskable-512.png", "./apple-touch-icon.png", "./favicon.png"];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(VERSION).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==VERSION).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));});
